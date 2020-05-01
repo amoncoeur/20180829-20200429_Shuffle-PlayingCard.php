@@ -79,6 +79,12 @@ class PlayingCard {
 			default : return "";
 		}
 	}
+	
+	// カードの名前を設定
+	static function CardNaming() {
+		$cardName = NamingSuit($suit) + NamingNumber($number);
+		return $cardName == "" ? "Joker" : $cardName;
+	}
 
 	// randomNumberの決定を簡単に
 	static function NumberDecideElementary() {
@@ -88,12 +94,12 @@ class PlayingCard {
 	static function NumberDecide() {
 		return mt_rand() % 0x70000000;
 	}
-	// randomNumberの再決定 定数分ずらす
+	// randomNumberの再決定 定数分をずらす
 	static function NumberReDecide(&$baseValue, $addValue) {
 		$baseValue = ($baseValue += $addValue) %= 0x70000000 
 		return $baseValue;
 	}
-	// randomNumberの再決定overloadランダム決定
+	// randomNumberの再決定overload ランダム決定
 	static function NumberReDecide(&$baseValue) {
 		return NumberReDecide($baseValue, NumberDecideElementary());
 	}
@@ -132,10 +138,7 @@ class PlayingCard {
 	// カード1枚選択(2~A,Joker弱い)
 	// カード1枚選択(A~K,Joker強い)
 	// カード1枚選択(2~A,Joker強い)
-	static function SelectCard($suit, $number) {
-		$cardName = NamingSuit($suit) + NamingNumber($number);
-		return $cardName == "" ? "Joker" : $cardName;
-	}
+	
 }
 
 
