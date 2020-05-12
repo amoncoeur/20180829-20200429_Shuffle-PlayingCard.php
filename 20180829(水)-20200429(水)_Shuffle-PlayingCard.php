@@ -129,8 +129,11 @@ class PlayingCard {
 	// ランダム数位選択1回分(2~A, Joker強い)
 	static function NumSelAceGreaterJStrong($randomNumber) {
 		$numberValue = $randomNumber % 15;
-		return $numberValue == 1 ? NumberReDecide($randomNumber) : ($numberValue == 0 ? 15 : $numberValue); // 1を返したらやり直す
+		return $numberValue == 1 ? NumSelAceGreaterJStrong(NumberReDecide($randomNumber)) : ($numberValue == 0 ? 15 : $numberValue); // 1を返したらやり直す
 	}
+	
+	// 同じ(Suit, CardNumber)のPlayingCardオブジェクトがあれば"true"を返す
+	// for文で1個ずつ見ていく?
 
 	// カード1枚選択(A~K,Jokerなし)
 	// カード1枚選択(2~A,Jokerなし)
