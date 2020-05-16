@@ -132,8 +132,22 @@ class PlayingCard {
 		return $numberValue == 1 ? NumSelAceGreaterJStrong(NumberReDecide($randomNumber)) : ($numberValue == 0 ? 15 : $numberValue); // 1を返したらやり直す
 	}
 	
-	// 同じ(Suit, CardNumber)のPlayingCardオブジェクトがあれば"true"を返す
+	// カードの束に同じ(Suit, CardNumber)のPlayingCardオブジェクトがあれば"true"を返す
 	// for文で1個ずつ見ていく?
+	// まずは1枚分の比較
+	private function CompareSuitAndNumber($suit, $number) {
+		return $this->suit == $suit && $this->cardNumber == $number ? true : false
+	}
+	
+	// カードの束から一枚ずつCompareSuitAndNumberにかける
+	static pubric function ExistSameCard(array &$cardBandle, int $suit, int $number){
+		int $i = 0;
+		int $max = count($cardBandle);
+		while($i < $max) {
+			if($cardBandle[i++]->CompareSuitAndNumber($suit, $number))return true;
+		}
+		return false;
+	}
 
 	// カード1枚選択(A~K,Jokerなし)
 	// カード1枚選択(2~A,Jokerなし)
