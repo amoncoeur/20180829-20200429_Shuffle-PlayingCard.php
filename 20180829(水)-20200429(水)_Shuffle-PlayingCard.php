@@ -1,5 +1,5 @@
 <html><body><?php
-echo "20180829(水)-20200429(水)_Shuffle-PlayingCard.php<br>";
+echo "20180829(水)-20200429(水)-20240516(木)_Shuffle-PlayingCard.php<br>";
 
 // SUIT of CARD
 class Suit extends SplEnum {
@@ -140,11 +140,11 @@ class PlayingCard {
 	}
 	
 	// カードの束から一枚ずつCompareSuitAndNumberにかける
-	static pubric function ExistSameCard(array &$cardBandle, int $suit, int $number){
+	static pubric function ExistSameCard(array &$cardBandle, int $newSuit, int $newNumber){
 		int $i = 0;
 		int $max = count($cardBandle);
 		while($i < $max) {
-			if($cardBandle[i++]->CompareSuitAndNumber($suit, $number))return true;
+			if($cardBandle[i++]->CompareSuitAndNumber($newSuit, $newNumber))return true;
 		}
 		return false;
 	}
