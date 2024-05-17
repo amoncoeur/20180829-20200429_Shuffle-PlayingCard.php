@@ -1,6 +1,8 @@
 <html><body><?php
-echo "20180829(水)-20200429(水)-20240516(木)_Shuffle-PlayingCard.php<br>";
+echo "20180829(水)-20200429(水)-20240517(金)_Shuffle-PlayingCard.php<br>";
 
+// 20240517(金)32bitでも64bitでもランダムで生成した数値を8bitずつ抽出して使う
+// あとで具現化する
 // SUIT of CARD
 class Suit extends SplEnum {
 	const Baba = 0;
@@ -43,7 +45,12 @@ class PlayingCard {
 		$this->cardNumber = (CardNumber)$number;
 		$this->CardName += NamingNumber($number);
 	}
-
+	// コンストラクタ(overload) 構築されたstockに同じカードがないか確認する
+	public constract(array & $cardBandle, int $suit, int $number){
+		$ExistSameCard(& $cardBandle, $suit, $number) ? 
+		PlayingCard(& $cardBandle, $NumberReDecide($suit), $NumberReDecide($number)) : PlayingCard($suit, $number);
+	}
+ 
 	// メソッド
 	// suit の naming
 	static function NamingSuit($suit) {
