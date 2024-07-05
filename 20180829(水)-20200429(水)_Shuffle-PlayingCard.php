@@ -142,8 +142,8 @@ class PlayingCard {
 	// カードの束に同じ(Suit, CardNumber)のPlayingCardオブジェクトがあれば"true"を返す
 	// for文で1個ずつ見ていく?
 	// まずは1枚分の比較
-	private function CompareSuitAndNumber($suit, $number) {
-		return $this->suit == $suit && $this->cardNumber == $number ? true : false
+	private function CompareSuitAndNumber($newSuit, $newNumber) {
+		return $this->suit == $newSuit && $this->cardNumber == $newNumber ? true : false
 	}
 	
 	// カードの束から一枚ずつCompareSuitAndNumberにかける
